@@ -46,8 +46,32 @@ print(f'BUBBLE SORT ')
 testarr = [3,44,38,5,47,15,36,26,27,2,46,4,19,50, 48]
 print(bubble_sort(testarr))
 
+setArr = [6, 3, 4, 5, 6, 1, 7, 2, 5, 3, 2, 1, 3]
 
 # STRETCH: implement the Count Sort function below
 def count_sort( arr, maximum=-1 ):
+    # create set from arr
+    count_set = set(arr)
+    sorted_arr = []
 
+    # built dictionary from set, init to 1
+    count_dic = {}
+    for item in count_set:
+        if item < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        else:
+            count_dic[item] = 0
+
+    for item in arr:      
+        count_dic[item] += 1 
+
+    for k, v in count_dic.items():
+        while v > 0:
+            sorted_arr.append(k)
+            v -= 1
+
+    arr = sorted_arr
     return arr
+
+print(f'COUNT SORT ')
+print(count_sort(setArr))    
