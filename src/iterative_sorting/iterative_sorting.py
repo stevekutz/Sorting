@@ -56,22 +56,61 @@ def count_sort( arr, maximum=-1 ):
 
     # built dictionary from set, init to 1
     count_dic = {}
+
     for item in count_set:
         if item < 0:
             return "Error, negative numbers not allowed in Count Sort"
         else:
             count_dic[item] = 0
 
-    for item in arr:      
-        count_dic[item] += 1 
 
-    for k, v in count_dic.items():
-        while v > 0:
-            sorted_arr.append(k)
-            v -= 1
+    while len(arr) > 0:
+        item = arr.pop()
+        if item < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        else:
+            for k, v in count_dic.items():
+                if k == item:     #exists   if
+                    count_dic[item] += 1 
+                else:    
+                    count_dic[item] = 1
+                    
+    # for item in arr:      
+    #     count_dic[item] += 1 
 
-    arr = sorted_arr
+    # for k, v in count_dic.items():
+    #     while v > 0:
+    #         sorted_arr.append(k)
+    #         v -= 1
+
+    # arr = sorted_arr
     return arr
 
 print(f'COUNT SORT ')
 print(count_sort(setArr))    
+
+
+# # STRETCH: implement the Count Sort function below
+# def count_sort( arr, maximum=-1 ):
+#     # create set from arr
+#     count_set = set(arr)
+#     sorted_arr = []
+
+#     # built dictionary from set, init to 1
+#     count_dic = {}
+#     for item in count_set:
+#         if item < 0:
+#             return "Error, negative numbers not allowed in Count Sort"
+#         else:
+#             count_dic[item] = 0
+
+#     for item in arr:      
+#         count_dic[item] += 1 
+
+#     for k, v in count_dic.items():
+#         while v > 0:
+#             sorted_arr.append(k)
+#             v -= 1
+
+#     arr = sorted_arr
+#     return arr
